@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler'; // Importación obligatoria, pero sin GestureHandlerRootView
+import React from "react";
+import { NavigationContainer } from '@react-navigation/native'; // Container de navegación
+import { createNativeStackNavigator } from '@react-navigation/native-stack'; // Stack Navigator
 
-export default function App() {
+// Importa pantallas (ajusta la ruta si es necesario)
+import Inicio from './src/models/Inicio';
+import ListaRecetas from './src/models/ListaRecetas';
+import Detalles from './src/models/Detalles';
+
+// Creación del Stack Navigator
+const Stack = createNativeStackNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Inicio">
+        <Stack.Screen name="Inicio" component={Inicio} />
+        <Stack.Screen name="ListaRecetas" component={ListaRecetas} />
+        <Stack.Screen name="Detalles" component={Detalles} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
