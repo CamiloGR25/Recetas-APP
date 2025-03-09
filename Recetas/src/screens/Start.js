@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 
-const Inicio = ({ navigation }) => {
+const Start = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/45/45332.png" }}
@@ -9,7 +9,7 @@ const Inicio = ({ navigation }) => {
             <Text style={styles.title}>Recetas Deliciosas</Text>
             <Text style={styles.subtitle}>Explora y cocina platos increíbles</Text>
 
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("ListaRecetas")}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Menu")}>
                 <Text style={styles.buttonText}>Iniciar</Text>
             </TouchableOpacity>
             <Text style={styles.txtintegrantes}>Integrantes:</Text>
@@ -72,4 +72,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Inicio;
+export default Start;
