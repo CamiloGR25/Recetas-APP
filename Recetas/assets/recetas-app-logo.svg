@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#FF6B6B" />
+  <circle cx="100" cy="100" r="85" fill="#FFFFFF" />
+  
+  <!-- Plate -->
+  <circle cx="100" cy="100" r="75" fill="#F8F9FA" stroke="#E0E0E0" stroke-width="2" />
+  
+  <!-- Food elements -->
+  <!-- Dish with food -->
+  <g>
+    <!-- Main dish -->
+    <ellipse cx="100" cy="103" rx="55" ry="25" fill="#4ECDC4" />
+    <ellipse cx="100" cy="100" rx="55" ry="25" fill="#FFD166" />
+    
+    <!-- Garnish/decoration -->
+    <circle cx="85" cy="92" r="8" fill="#6A994E" />
+    <circle cx="110" cy="88" r="7" fill="#BC4749" />
+    <circle cx="125" cy="95" r="6" fill="#F26419" />
+    <circle cx="70" cy="100" r="7" fill="#2A9D8F" />
+  </g>
+  
+  <!-- Fork and knife -->
+  <g transform="rotate(45, 100, 100)">
+    <!-- Fork -->
+    <rect x="65" y="40" width="4" height="60" rx="2" fill="#555555" />
+    <rect x="60" y="40" width="4" height="30" rx="1" fill="#555555" />
+    <rect x="70" y="40" width="4" height="30" rx="1" fill="#555555" />
+    
+    <!-- Knife -->
+    <rect x="130" y="40" width="5" height="60" rx="2" fill="#555555" />
+    <path d="M 130,40 L 122,70 L 130,70 Z" fill="#555555" />
+  </g>
+  
+  <!-- App name - positioned higher to not overlap with the black line -->
+  <!-- Removed the path (black line) and moved text upward -->
+  <text x="100" y="155" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#333333">RecetasApp</text>
+</svg>
