@@ -17,7 +17,7 @@ RecetasApp es una aplicación móvil desarrollada con **React Native** y **Expo*
 ## 📂 Estructura del proyecto
 
 ```
-Recetas-App/ 
+Recetas/ 
 ├── src/                    # Código fuente principal
 │   ├── data/               # Datos y modelos
 │   │   └── Recetas.js      # Datos de recetas
@@ -38,7 +38,7 @@ Recetas-App/
 
    ```bash
    git clone https://github.com/CamiloGR25/Recetas-APP
-   cd Recetas-App
+   cd Recetas
    ```
 
 2. **Instala las dependencias:**
