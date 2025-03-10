@@ -78,17 +78,21 @@ const RecipeDetail = ({ route }) => {
                 <Text style={styles.area}>Región: {meal.strArea}</Text>
             </View>
             <View style={styles.section}>
-                <Text style={styles.subtitle}>Ingredientes:</Text>
+                <Text style={styles.subtitle}>
+                    {currentLang === "en" ? "Ingredients:" : "Ingredientes:"}
+                </Text>
                 {(isTranslated ? translatedIngredients : ingredients).map((item, index) => (
                     <Text key={index} style={styles.ingredient}>{item}</Text>
                 ))}
             </View>
             <View style={styles.section}>
-                <Text style={styles.subtitle}>Instrucciones:</Text>
+                <Text style={styles.subtitle}>
+                    {currentLang === "en" ? "Instructions:" : "Instrucciones:"}
+                </Text>
                 <Text style={styles.text}>{isTranslated ? translatedText : meal.strInstructions}</Text>
                 <TouchableOpacity style={styles.button} onPress={translateInstructionsAndIngredients}>
                     <Text style={styles.buttonText}>
-                        {currentLang === "en" ? "Traducir a Español" : "Translate into english"}
+                        {currentLang === "en" ? "Traducir a Español" : "Translate into English"}
                     </Text>
                 </TouchableOpacity>
             </View>
