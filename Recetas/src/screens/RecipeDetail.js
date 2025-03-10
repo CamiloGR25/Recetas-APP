@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import { WebView } from "react-native-webview";
 import { fetchRecipeDetails } from "../services/api";
 
 const RecipeDetail = ({ route }) => {
     const { mealId } = route.params;
     const [meal, setMeal] = useState(null);
+    const [translatedText, setTranslatedText] = useState("");
+    const [translatedIngredients, setTranslatedIngredients] = useState([]);
+    const [isTranslated, setIsTranslated] = useState(false);
 
     useEffect(() => {
         const loadMeal = async () => {
@@ -25,7 +28,6 @@ const RecipeDetail = ({ route }) => {
 
     const youtubeEmbedUrl = getYouTubeEmbedUrl(meal.strYoutube);
 
-    // Obtener ingredientes de la receta
     const getIngredients = () => {
         let ingredients = [];
         for (let i = 1; i <= 20; i++) {
@@ -40,41 +42,63 @@ const RecipeDetail = ({ route }) => {
 
     const ingredients = getIngredients();
 
+    const translateInstructionsAndIngredients = async () => {
+        if (!meal) return;
+        try {
+            const response = await fetch(
+                `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=es&dt=t&q=${encodeURIComponent(meal.strInstructions)}`
+            );
+            const data = await response.json();
+            if (data && data[0]) {
+                const translated = data[0].map(item => item[0]).join(" ");
+                setTranslatedText(translated);
+            }
+
+            const translatedIngredientsArray = await Promise.all(
+                ingredients.map(async (ingredient) => {
+                    const res = await fetch(
+                        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=es&dt=t&q=${encodeURIComponent(ingredient)}`
+                    );
+                    const ingData = await res.json();
+                    return ingData[0] ? ingData[0].map(item => item[0]).join(" ") : ingredient;
+                })
+            );
+            setTranslatedIngredients(translatedIngredientsArray);
+            setIsTranslated(true);
+        } catch (error) {
+            console.error("Error translating text:", error);
+        }
+    };
+
+
+
+
     return (
         <ScrollView style={styles.container}>
-            {/* Imagen Destacada */}
             <Image source={{ uri: meal.strMealThumb }} style={styles.detailImage} />
-
-            {/* Sección del Título */}
             <View style={styles.section}>
                 <Text style={styles.title}>{meal.strMeal}</Text>
                 <Text style={styles.category}>Categoría: {meal.strCategory}</Text>
                 <Text style={styles.area}>Región: {meal.strArea}</Text>
             </View>
-
-            {/* Sección de Ingredientes */}
             <View style={styles.section}>
                 <Text style={styles.subtitle}>Ingredientes:</Text>
-                {ingredients.map((item, index) => (
+                {(isTranslated ? translatedIngredients : ingredients).map((item, index) => (
                     <Text key={index} style={styles.ingredient}>{item}</Text>
                 ))}
             </View>
-
-            {/* Sección de Instrucciones */}
             <View style={styles.section}>
                 <Text style={styles.subtitle}>Instrucciones:</Text>
-                <Text style={styles.text}>{meal.strInstructions}</Text>
+                <Text style={styles.text}>{isTranslated ? translatedText : meal.strInstructions}</Text>
+                <TouchableOpacity style={styles.button} onPress={translateInstructionsAndIngredients}>
+                    <Text style={styles.buttonText}>Traducir a Español</Text>
+                </TouchableOpacity>
             </View>
 
-            {/* Video de la Receta */}
             {youtubeEmbedUrl && (
                 <View style={styles.videoContainer}>
                     <Text style={styles.subtitle}>Video Tutorial:</Text>
-                    <WebView
-                        source={{ uri: youtubeEmbedUrl }}
-                        style={styles.video}
-                        allowsFullscreenVideo={true}
-                    />
+                    <WebView source={{ uri: youtubeEmbedUrl }} style={styles.video} allowsFullscreenVideo={true} />
                 </View>
             )}
         </ScrollView>
@@ -144,6 +168,18 @@ const styles = StyleSheet.create({
         color: "#333",
         lineHeight: 24,
         textAlign: "justify",
+    },
+    button: {
+        marginTop: 10,
+        backgroundColor: "#007bff",
+        padding: 10,
+        borderRadius: 5,
+        alignItems: "center",
+    },
+    buttonText: {
+        color: "#fff",
+        fontSize: 16,
+        fontWeight: "bold",
     },
     videoContainer: {
         marginTop: 20,
