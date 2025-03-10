@@ -2,8 +2,6 @@
 
 RecetasApp es una aplicación móvil desarrollada con **React Native** y **Expo** que permite explorar recetas de cocina. La aplicación utiliza la API de [TheMealDB](https://www.themealdb.com/api.php) para mostrar información actualizada de recetas.
 
-![RecetasApp Logo](Recetas\assets\recetas-app-logo.png)
-
 ## 📱 Funcionalidades
 
 - **Explorar categorías**: Visualiza distintas categorías de recetas, cada una representada por una imagen.
@@ -60,10 +58,6 @@ Recetas-App/
    - [Emulador de Android](https://docs.expo.dev/workflow/android-studio-emulator/)
    - [Simulador de iOS](https://docs.expo.dev/workflow/ios-simulator/)
    - [Development build](https://docs.expo.dev/develop/development-builds/introduction/)
-
-## 📱 Capturas de pantalla
-
-<!-- Aquí puedes añadir algunas capturas de pantalla de la aplicación -->
 
 ## 🤝 Contribuir
 
