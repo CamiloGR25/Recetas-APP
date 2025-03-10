@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet, SafeAreaView } from "react-native";
 import { fetchCategories } from "../services/api";
 
 const Menu = ({ navigation }) => {
@@ -14,20 +14,24 @@ const Menu = ({ navigation }) => {
     }, []);
 
     return (
-        <FlatList
-            data={categories}
-            keyExtractor={(item) => item.idCategory}
-            numColumns={2}
-            renderItem={({ item }) => (
-                <TouchableOpacity
-                    style={styles.card}
-                    onPress={() => navigation.navigate("RecipesList", { category: item.strCategory })}
-                >
-                    <Image source={{ uri: item.strCategoryThumb }} style={styles.image} />
-                    <Text style={styles.text}>{item.strCategory}</Text>
-                </TouchableOpacity>
-            )}
-        />
+        <SafeAreaView>
+            <Text style={styles.title}>MENÚ</Text>
+            <FlatList
+                data={categories}
+                keyExtractor={(item) => item.idCategory}
+                numColumns={2}
+                renderItem={({ item }) => (
+                    <TouchableOpacity
+                        style={styles.card}
+                        onPress={() => navigation.navigate("RecipesList", { category: item.strCategory })}
+                    >
+                        <Image source={{ uri: item.strCategoryThumb }} style={styles.image} />
+                        <Text style={styles.text}>{item.strCategory}</Text>
+                    </TouchableOpacity>
+                )}
+            />
+        </SafeAreaView>
+
     );
 };
 
@@ -55,6 +59,12 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "bold",
         textAlign: "center",
+    },
+    title: {
+        fontSize: 26,
+        fontWeight: "bold",
+        textAlign: "center",
+        color: "#333",
     },
 });
 

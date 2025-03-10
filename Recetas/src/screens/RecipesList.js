@@ -18,6 +18,7 @@ const RecipesList = ({ route, navigation }) => {
         <FlatList
             data={recipes}
             keyExtractor={(item) => item.idMeal}
+            numColumns={2}
             renderItem={({ item }) => (
                 <TouchableOpacity
                     style={styles.card}
@@ -28,6 +29,8 @@ const RecipesList = ({ route, navigation }) => {
                 </TouchableOpacity>
             )}
         />
+
+
     );
 };
 
@@ -55,6 +58,12 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "bold",
         textAlign: "center",
+    },
+    title: {
+        fontSize: 26,
+        fontWeight: "bold",
+        textAlign: "center",
+        color: "#333",
     },
 });
 
