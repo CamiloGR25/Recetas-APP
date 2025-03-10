@@ -6,13 +6,13 @@ const Start = ({ navigation }) => {
         <View style={styles.container}>
             <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/45/45332.png" }}
                 style={styles.image} />
-            <Text style={styles.title}>Recetas Deliciosas</Text>
-            <Text style={styles.subtitle}>Explora y cocina platos increíbles</Text>
+            <Text style={styles.title}>Delicious recipes</Text>
+            <Text style={styles.subtitle}>Explore and cook amazing dishes</Text>
 
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Menu")}>
-                <Text style={styles.buttonText}>Iniciar</Text>
+                <Text style={styles.buttonText}>Start</Text>
             </TouchableOpacity>
-            <Text style={styles.txtintegrantes}>Integrantes:</Text>
+            <Text style={styles.txtintegrantes}>Members:</Text>
             <Text style={styles.txtintegrantes}>Sergio Camilo Gomez Rincon</Text>
             <Text style={styles.txtintegrantes}>Michael Rodriguez Rios</Text>
             <Text style={styles.txtintegrantes}>Gabriel Felipe Beltran</Text>

@@ -9,6 +9,7 @@ const RecipeDetail = ({ route }) => {
     const [translatedText, setTranslatedText] = useState("");
     const [translatedIngredients, setTranslatedIngredients] = useState([]);
     const [isTranslated, setIsTranslated] = useState(false);
+    const [currentLang, setCurrentLang] = useState("en");
 
     useEffect(() => {
         const loadMeal = async () => {
@@ -42,36 +43,31 @@ const RecipeDetail = ({ route }) => {
 
     const ingredients = getIngredients();
 
+    const translateText = async (text, targetLang) => {
+        const response = await fetch(
+            `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`
+        );
+        const data = await response.json();
+        return data[0] ? data[0].map(item => item[0]).join(" ") : text;
+    };
+
     const translateInstructionsAndIngredients = async () => {
         if (!meal) return;
+        const newLang = currentLang === "es" ? "en" : "es";
         try {
-            const response = await fetch(
-                `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=es&dt=t&q=${encodeURIComponent(meal.strInstructions)}`
-            );
-            const data = await response.json();
-            if (data && data[0]) {
-                const translated = data[0].map(item => item[0]).join(" ");
-                setTranslatedText(translated);
-            }
+            const translatedInstructions = await translateText(meal.strInstructions, newLang);
+            setTranslatedText(translatedInstructions);
 
             const translatedIngredientsArray = await Promise.all(
-                ingredients.map(async (ingredient) => {
-                    const res = await fetch(
-                        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=es&dt=t&q=${encodeURIComponent(ingredient)}`
-                    );
-                    const ingData = await res.json();
-                    return ingData[0] ? ingData[0].map(item => item[0]).join(" ") : ingredient;
-                })
+                ingredients.map(async (ingredient) => await translateText(ingredient, newLang))
             );
             setTranslatedIngredients(translatedIngredientsArray);
             setIsTranslated(true);
+            setCurrentLang(newLang);
         } catch (error) {
             console.error("Error translating text:", error);
         }
     };
-
-
-
 
     return (
         <ScrollView style={styles.container}>
@@ -91,10 +87,11 @@ const RecipeDetail = ({ route }) => {
                 <Text style={styles.subtitle}>Instrucciones:</Text>
                 <Text style={styles.text}>{isTranslated ? translatedText : meal.strInstructions}</Text>
                 <TouchableOpacity style={styles.button} onPress={translateInstructionsAndIngredients}>
-                    <Text style={styles.buttonText}>Traducir a Español</Text>
+                    <Text style={styles.buttonText}>
+                        {currentLang === "en" ? "Traducir a Español" : "Traducir a Inglés"}
+                    </Text>
                 </TouchableOpacity>
             </View>
-
             {youtubeEmbedUrl && (
                 <View style={styles.videoContainer}>
                     <Text style={styles.subtitle}>Video Tutorial:</Text>
