@@ -40,7 +40,7 @@ Recetas-App/
 
    ```bash
    git clone https://github.com/CamiloGR25/Recetas-APP
-   cd RecetasApp
+   cd Recetas-App
    ```
 
 2. **Instala las dependencias:**
