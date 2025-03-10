@@ -88,7 +88,7 @@ const RecipeDetail = ({ route }) => {
                 <Text style={styles.text}>{isTranslated ? translatedText : meal.strInstructions}</Text>
                 <TouchableOpacity style={styles.button} onPress={translateInstructionsAndIngredients}>
                     <Text style={styles.buttonText}>
-                        {currentLang === "en" ? "Traducir a Español" : "Traducir a Inglés"}
+                        {currentLang === "en" ? "Traducir a Español" : "Translate into english"}
                     </Text>
                 </TouchableOpacity>
             </View>
