@@ -77,23 +77,17 @@ const RecipeDetail = ({ route }) => {
                 <Text style={styles.category}>Categoría: {meal.strCategory}</Text>
                 <Text style={styles.area}>Región: {meal.strArea}</Text>
             </View>
-            <View style={styles.section}>
-                <Text style={styles.subtitle}>
-                    {currentLang === "en" ? "Ingredients:" : "Ingredientes:"}
-                </Text>
+            <View style={styles.sectionIngredients}>
+                <Text style={styles.subtitle}>{currentLang === "en" ? "Ingredients:" : "Ingredientes:"}</Text>
                 {(isTranslated ? translatedIngredients : ingredients).map((item, index) => (
                     <Text key={index} style={styles.ingredient}>{item}</Text>
                 ))}
             </View>
-            <View style={styles.section}>
-                <Text style={styles.subtitle}>
-                    {currentLang === "en" ? "Instructions:" : "Instrucciones:"}
-                </Text>
+            <View style={styles.sectionInstructions}>
+                <Text style={styles.subtitle}>{currentLang === "en" ? "Instructions:" : "Instrucciones:"}</Text>
                 <Text style={styles.text}>{isTranslated ? translatedText : meal.strInstructions}</Text>
                 <TouchableOpacity style={styles.button} onPress={translateInstructionsAndIngredients}>
-                    <Text style={styles.buttonText}>
-                        {currentLang === "en" ? "Traducir a Español" : "Translate into English"}
-                    </Text>
+                    <Text style={styles.buttonText}>{currentLang === "en" ? "Traducir a Español" : "Translate into English"}</Text>
                 </TouchableOpacity>
             </View>
             {youtubeEmbedUrl && (
@@ -109,7 +103,7 @@ const RecipeDetail = ({ route }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#f8f9fa",
+        backgroundColor: "#FFF3E0",
         paddingBottom: 20,
     },
     loadingText: {
@@ -121,60 +115,61 @@ const styles = StyleSheet.create({
     detailImage: {
         width: "100%",
         height: 300,
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
+        borderBottomLeftRadius: 40,
+        borderBottomRightRadius: 40,
     },
     section: {
-        backgroundColor: "#fff",
+        backgroundColor: "#FFAB40",
         padding: 15,
         marginHorizontal: 15,
         marginTop: 15,
-        borderRadius: 10,
+        borderRadius: 20,
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-        elevation: 3,
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+        elevation: 5,
+    },
+    sectionIngredients: {
+        backgroundColor: "#FF7043",
+        padding: 15,
+        marginHorizontal: 15,
+        marginTop: 15,
+        borderRadius: 20,
+    },
+    sectionInstructions: {
+        backgroundColor: "#D84315",
+        padding: 15,
+        marginHorizontal: 15,
+        marginTop: 15,
+        borderRadius: 20,
     },
     title: {
         fontSize: 26,
         fontWeight: "bold",
         textAlign: "center",
-        color: "#333",
-    },
-    category: {
-        fontSize: 16,
-        textAlign: "center",
-        color: "#666",
-        marginTop: 5,
-    },
-    area: {
-        fontSize: 16,
-        textAlign: "center",
-        color: "#666",
+        color: "#fff",
     },
     subtitle: {
         fontSize: 20,
         fontWeight: "bold",
-        marginBottom: 10,
-        color: "#444",
+        color: "#fff",
     },
     ingredient: {
         fontSize: 16,
-        color: "#555",
+        color: "#fff",
         paddingVertical: 2,
     },
     text: {
         fontSize: 16,
-        color: "#333",
-        lineHeight: 24,
+        color: "#fff",
         textAlign: "justify",
     },
     button: {
         marginTop: 10,
-        backgroundColor: "#007bff",
+        backgroundColor: "#BF360C",
         padding: 10,
-        borderRadius: 5,
+        borderRadius: 10,
         alignItems: "center",
     },
     buttonText: {
@@ -184,15 +179,10 @@ const styles = StyleSheet.create({
     },
     videoContainer: {
         marginTop: 20,
-        backgroundColor: "#fff",
+        backgroundColor: "#FF5722",
         padding: 15,
-        borderRadius: 10,
+        borderRadius: 20,
         marginHorizontal: 15,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-        elevation: 3,
     },
     video: {
         height: 200,
