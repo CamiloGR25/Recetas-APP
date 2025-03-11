@@ -16,10 +16,15 @@ const Start = ({ navigation }) => {
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Menu") }>
                     <Text style={styles.buttonText}>Start</Text>
                 </TouchableOpacity>
-                <Text style={styles.txtIntegrantes}>Members:</Text>
-                <Text style={styles.txtIntegrantes}>Sergio Camilo Gomez Rincon</Text>
-                <Text style={styles.txtIntegrantes}>Michael Rodriguez Rios</Text>
-                <Text style={styles.txtIntegrantes}>Gabriel Felipe Beltran Ruiz</Text>
+                
+                <View style={styles.footerContainer}>
+                    <Text style={styles.txtIntegrantes}>Members:</Text>
+                    <Text style={styles.txtIntegrantes}>Sergio Camilo Gomez Rincon</Text>
+                    <Text style={styles.txtIntegrantes}>Michael Rodriguez Rios</Text>
+                    <Text style={styles.txtIntegrantes}>Gabriel Felipe Beltran</Text>
+                    <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/2921/2921822.png" }} 
+                        style={styles.footerImage} />
+                </View>
             </View>
         </ImageBackground>
     );
@@ -82,6 +87,15 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontFamily: "serif",
     },
+    footerContainer: {
+        marginTop: 20,
+        alignItems: "center",
+    },
+    footerImage: {
+        width: 50,
+        height: 50,
+        marginTop: 10,
+    }
 });
 
 export default Start;
