@@ -1,31 +1,41 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground } from "react-native";
 
 const Start = ({ navigation }) => {
     return (
-        <View style={styles.container}>
-            <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/45/45332.png" }}
-                style={styles.image} />
-            <Text style={styles.title}>Delicious Recipes</Text>
-            <Text style={styles.subtitle}>Explore and cook amazing dishes</Text>
+        <ImageBackground 
+            source={{ uri: "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2" }} // Fondo de comida
+            style={styles.background}
+        >
+            <View style={styles.container}>
+                <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/45/45332.png" }}
+                    style={styles.image} />
+                <Text style={styles.title}>Delicious Recipes</Text>
+                <Text style={styles.subtitle}>Explore and cook amazing dishes</Text>
 
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Menu") }>
-                <Text style={styles.buttonText}>Start</Text>
-            </TouchableOpacity>
-            <Text style={styles.txtIntegrantes}>Members:</Text>
-            <Text style={styles.txtIntegrantes}>Sergio Camilo Gomez Rincon</Text>
-            <Text style={styles.txtIntegrantes}>Michael Rodriguez Rios</Text>
-            <Text style={styles.txtIntegrantes}>Gabriel Felipe Beltran</Text>
-        </View>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Menu") }>
+                    <Text style={styles.buttonText}>Start</Text>
+                </TouchableOpacity>
+                <Text style={styles.txtIntegrantes}>Members:</Text>
+                <Text style={styles.txtIntegrantes}>Sergio Camilo Gomez Rincon</Text>
+                <Text style={styles.txtIntegrantes}>Michael Rodriguez Rios</Text>
+                <Text style={styles.txtIntegrantes}>Gabriel Felipe Beltran Ruiz</Text>
+            </View>
+        </ImageBackground>
     );
 };
 
 const styles = StyleSheet.create({
+    background: {
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center",
+    },
     container: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#FFF8E1", // Fondo en tono crema
+        backgroundColor: "rgba(255, 248, 225, 0.85)", // Fondo semi-transparente para legibilidad
         padding: 20,
     },
     image: {
