@@ -6,16 +6,16 @@ const Start = ({ navigation }) => {
         <View style={styles.container}>
             <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/45/45332.png" }}
                 style={styles.image} />
-            <Text style={styles.title}>Delicious recipes</Text>
+            <Text style={styles.title}>Delicious Recipes</Text>
             <Text style={styles.subtitle}>Explore and cook amazing dishes</Text>
 
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Menu")}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Menu") }>
                 <Text style={styles.buttonText}>Start</Text>
             </TouchableOpacity>
-            <Text style={styles.txtintegrantes}>Members:</Text>
-            <Text style={styles.txtintegrantes}>Sergio Camilo Gomez Rincon</Text>
-            <Text style={styles.txtintegrantes}>Michael Rodriguez Rios</Text>
-            <Text style={styles.txtintegrantes}>Gabriel Felipe Beltran</Text>
+            <Text style={styles.txtIntegrantes}>Members:</Text>
+            <Text style={styles.txtIntegrantes}>Sergio Camilo Gomez Rincon</Text>
+            <Text style={styles.txtIntegrantes}>Michael Rodriguez Rios</Text>
+            <Text style={styles.txtIntegrantes}>Gabriel Felipe Beltran</Text>
         </View>
     );
 };
@@ -25,39 +25,40 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#f8f8f8",
+        backgroundColor: "#FFF8E1", // Fondo en tono crema
         padding: 20,
     },
     image: {
-        width: 100,
-        height: 100,
+        width: 120,
+        height: 120,
         marginBottom: 20,
         resizeMode: "contain",
     },
     title: {
-        fontSize: 32,
+        fontSize: 36,
         fontWeight: "bold",
-        color: "#333",
+        color: "#D84315", // Marrón anaranjado
         marginBottom: 10,
         textAlign: "center",
+        fontFamily: "serif",
     },
     subtitle: {
         fontSize: 18,
-        color: "#555",
+        color: "#6D4C41", // Marrón oscuro
         marginBottom: 20,
         textAlign: "center",
+        fontStyle: "italic",
     },
-    txtintegrantes: {
-        fontSize: 13,
-        color: "#555",
-
+    txtIntegrantes: {
+        fontSize: 14,
+        color: "#795548", // Marrón medio
         textAlign: "center",
     },
     button: {
-        backgroundColor: "#FF5733",
+        backgroundColor: "#FF7043", // Naranja brillante
         paddingVertical: 15,
         paddingHorizontal: 30,
-        borderRadius: 10,
+        borderRadius: 25,
         elevation: 5,
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 2 },
@@ -67,8 +68,9 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: "#fff",
-        fontSize: 20,
+        fontSize: 22,
         fontWeight: "bold",
+        fontFamily: "serif",
     },
 });
 
