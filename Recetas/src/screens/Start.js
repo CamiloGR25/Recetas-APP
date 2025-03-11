@@ -7,23 +7,25 @@ const Start = ({ navigation }) => {
             source={{ uri: "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2" }} // Fondo de comida
             style={styles.background}
         >
-            <View style={styles.container}>
-                <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/45/45332.png" }}
-                    style={styles.image} />
-                <Text style={styles.title}>Delicious Recipes</Text>
-                <Text style={styles.subtitle}>Explore and cook amazing dishes</Text>
+            <View style={styles.borderContainer}>
+                <View style={styles.container}>
+                    <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/45/45332.png" }}
+                        style={styles.image} />
+                    <Text style={styles.title}>Delicious Recipes</Text>
+                    <Text style={styles.subtitle}>Explore and cook amazing dishes</Text>
 
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Menu") }>
-                    <Text style={styles.buttonText}>Start</Text>
-                </TouchableOpacity>
-                
-                <View style={styles.footerContainer}>
-                    <Text style={styles.txtIntegrantes}>Members:</Text>
-                    <Text style={styles.txtIntegrantes}>Sergio Camilo Gomez Rincon</Text>
-                    <Text style={styles.txtIntegrantes}>Michael Rodriguez Rios</Text>
-                    <Text style={styles.txtIntegrantes}>Gabriel Felipe Beltran</Text>
-                    <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/2921/2921822.png" }} 
-                        style={styles.footerImage} />
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Menu") }>
+                        <Text style={styles.buttonText}>Start</Text>
+                    </TouchableOpacity>
+                    
+                    <View style={styles.footerContainer}>
+                        <Text style={styles.txtIntegrantes}>Members:</Text>
+                        <Text style={styles.txtIntegrantes}>Sergio Camilo Gomez Rincon</Text>
+                        <Text style={styles.txtIntegrantes}>Michael Rodriguez Rios</Text>
+                        <Text style={styles.txtIntegrantes}>Gabriel Felipe Beltran Ruiz</Text>
+                        <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/2921/2921822.png" }} 
+                            style={styles.footerImage} />
+                    </View>
                 </View>
             </View>
         </ImageBackground>
@@ -35,12 +37,18 @@ const styles = StyleSheet.create({
         flex: 1,
         resizeMode: "cover",
         justifyContent: "center",
+        alignItems: "center",
+    },
+    borderContainer: {
+        borderWidth: 10,
+        borderColor: "#D84315", // Color marrón anaranjado para el marco
+        borderRadius: 20,
+        padding: 10,
+        backgroundColor: "rgba(255, 248, 225, 0.9)",
     },
     container: {
-        flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "rgba(255, 248, 225, 0.85)", // Fondo semi-transparente para legibilidad
         padding: 20,
     },
     image: {
