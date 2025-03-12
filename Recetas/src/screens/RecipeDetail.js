@@ -72,7 +72,7 @@ const RecipeDetail = ({ route }) => {
     return (
         <ScrollView style={styles.container}>
             <Image source={{ uri: meal.strMealThumb }} style={styles.detailImage} />
-            <View style={styles.sectionHeader}>
+            <View style={styles.section}>
                 <Text style={styles.title}>{meal.strMeal}</Text>
                 <Text style={styles.category}>Categoría: {meal.strCategory}</Text>
                 <Text style={styles.area}>Región: {meal.strArea}</Text>
@@ -103,7 +103,7 @@ const RecipeDetail = ({ route }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#FAF3DD",
+        backgroundColor: "#FAF3DD", // Beige claro
         paddingBottom: 20,
     },
     loadingText: {
@@ -118,22 +118,22 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,
     },
-    sectionHeader: {
-        backgroundColor: "#FF9F1C",
+    section: {
+        backgroundColor: "#F5CBA7", // Naranja claro
         padding: 15,
         marginHorizontal: 15,
         marginTop: 15,
         borderRadius: 20,
     },
     sectionIngredients: {
-        backgroundColor: "#2EC4B6",
+        backgroundColor: "#A8D5BA", // Verde suave
         padding: 15,
         marginHorizontal: 15,
         marginTop: 15,
         borderRadius: 20,
     },
     sectionInstructions: {
-        backgroundColor: "#E71D36",
+        backgroundColor: "#F7DC6F", // Amarillo pastel
         padding: 15,
         marginHorizontal: 15,
         marginTop: 15,
@@ -143,26 +143,26 @@ const styles = StyleSheet.create({
         fontSize: 26,
         fontWeight: "bold",
         textAlign: "center",
-        color: "#fff",
+        color: "#5C3D2E", // Marrón
     },
     subtitle: {
         fontSize: 20,
         fontWeight: "bold",
-        color: "#fff",
+        color: "#5C3D2E",
     },
     ingredient: {
         fontSize: 16,
-        color: "#fff",
+        color: "#4A4A4A",
         paddingVertical: 2,
     },
     text: {
         fontSize: 16,
-        color: "#fff",
+        color: "#4A4A4A",
         textAlign: "justify",
     },
     button: {
         marginTop: 10,
-        backgroundColor: "#D7263D",
+        backgroundColor: "#E59866",
         padding: 10,
         borderRadius: 10,
         alignItems: "center",
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     },
     videoContainer: {
         marginTop: 20,
-        backgroundColor: "#FF6B6B",
+        backgroundColor: "#F5B7B1", // Rosa pastel
         padding: 15,
         borderRadius: 20,
         marginHorizontal: 15,
