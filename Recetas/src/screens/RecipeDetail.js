@@ -72,7 +72,7 @@ const RecipeDetail = ({ route }) => {
     return (
         <ScrollView style={styles.container}>
             <Image source={{ uri: meal.strMealThumb }} style={styles.detailImage} />
-            <View style={styles.section}>
+            <View style={styles.sectionHeader}>
                 <Text style={styles.title}>{meal.strMeal}</Text>
                 <Text style={styles.category}>Categoría: {meal.strCategory}</Text>
                 <Text style={styles.area}>Región: {meal.strArea}</Text>
@@ -103,7 +103,7 @@ const RecipeDetail = ({ route }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#FFF3E0",
+        backgroundColor: "#FAF3DD",
         paddingBottom: 20,
     },
     loadingText: {
@@ -118,30 +118,63 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,
     },
-    section: {
-        backgroundColor: "#FFAB40",
+    sectionHeader: {
+        backgroundColor: "#FF9F1C",
         padding: 15,
         marginHorizontal: 15,
         marginTop: 15,
         borderRadius: 20,
     },
     sectionIngredients: {
-        backgroundColor: "#FFA726",
+        backgroundColor: "#2EC4B6",
         padding: 15,
         marginHorizontal: 15,
         marginTop: 15,
         borderRadius: 20,
     },
     sectionInstructions: {
-        backgroundColor: "#4CAF50",
+        backgroundColor: "#E71D36",
         padding: 15,
         marginHorizontal: 15,
         marginTop: 15,
         borderRadius: 20,
     },
+    title: {
+        fontSize: 26,
+        fontWeight: "bold",
+        textAlign: "center",
+        color: "#fff",
+    },
+    subtitle: {
+        fontSize: 20,
+        fontWeight: "bold",
+        color: "#fff",
+    },
+    ingredient: {
+        fontSize: 16,
+        color: "#fff",
+        paddingVertical: 2,
+    },
+    text: {
+        fontSize: 16,
+        color: "#fff",
+        textAlign: "justify",
+    },
+    button: {
+        marginTop: 10,
+        backgroundColor: "#D7263D",
+        padding: 10,
+        borderRadius: 10,
+        alignItems: "center",
+    },
+    buttonText: {
+        color: "#fff",
+        fontSize: 16,
+        fontWeight: "bold",
+    },
     videoContainer: {
         marginTop: 20,
-        backgroundColor: "#3F51B5",
+        backgroundColor: "#FF6B6B",
         padding: 15,
         borderRadius: 20,
         marginHorizontal: 15,
