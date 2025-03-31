@@ -14,8 +14,11 @@ const Start = ({ navigation }) => {
                     <Text style={styles.title}>Delicious Recipes</Text>
                     <Text style={styles.subtitle}>Explore and cook amazing dishes</Text>
 
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Menu")}>
-                        <Text style={styles.buttonText}>Start</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Login")}>
+                        <Text style={styles.buttonText}>Login</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+                        <Text style={styles.linkText}>Don't have an account? Sign up</Text>
                     </TouchableOpacity>
 
                     <View style={styles.footerContainer}>
@@ -103,7 +106,13 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         marginTop: 10,
-    }
+    },
+    linkText: {
+        color: "#BF360C",
+        fontSize: 14,
+        textAlign: "center",
+        fontStyle: "italic",
+    },
 });
 
 export default Start;

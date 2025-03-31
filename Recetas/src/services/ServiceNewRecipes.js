@@ -1,5 +1,7 @@
-import { db, ref, get } from "./firebaseConfig";
+import { db } from "./firebaseConfig";
+import { ref, get } from "firebase/database";
 
+//traer recetas nuevas por categoría
 export const fetchNewRecipesByCategory = async (category) => {
     try {
         const snapshot = await get(ref(db, "newRecipes"));

@@ -20,6 +20,7 @@ export const isFavorite = async (mealId) => {
   return snapshot.exists();
 };
 
+//traer la lista de favoritos
 export const getFavorites = async () => {
   const snapshot = await get(ref(db, "favorites"));
   return snapshot.exists() ? Object.values(snapshot.val()) : [];

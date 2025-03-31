@@ -9,6 +9,9 @@ import RecipesList from "./src/screens/RecipesList";
 import RecipeDetail from "./src/screens/RecipeDetail";
 import FavoriteRecipes from "./src/screens/FavoriteRecipes";
 import CreateRecipe from './src/screens/CreateRecipe';
+import Login from "./src/screens/Login";
+import Register from "./src/screens/Register";
+import ForgotPassword from "./src/screens/ForgotPassword";
 
 // Creación del Stack Navigator
 const Stack = createNativeStackNavigator();
@@ -23,7 +26,9 @@ function App() {
         <Stack.Screen name="RecipeDetail" component={RecipeDetail} options={{ title: "Recipe Details" }} />
         <Stack.Screen name="FavoriteRecipes" component={FavoriteRecipes} options={{ title: "Favorites Recipes" }} />
         <Stack.Screen name="CreateRecipe" component={CreateRecipe} options={{ title: "Create Recipe" }} />
-
+        <Stack.Screen name="Login" component={Login} options={{ title: "Login" }} />
+        <Stack.Screen name="Register" component={Register} options={{ title: "Register" }} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ title: "Forgot Password" }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

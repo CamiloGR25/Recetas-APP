@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, ScrollView, Alert } from "react-native";
-import { db, ref, push } from "../services/firebaseConfig";
+import { db } from "../services/firebaseConfig";
+import { ref, push } from "firebase/database";
 import { Picker } from "@react-native-picker/picker";
 import { fetchCategories } from "../services/api";
 
