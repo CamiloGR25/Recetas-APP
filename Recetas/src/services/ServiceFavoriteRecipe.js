@@ -19,3 +19,8 @@ export const isFavorite = async (mealId) => {
   const snapshot = await get(mealRef);
   return snapshot.exists();
 };
+
+export const getFavorites = async () => {
+  const snapshot = await get(ref(db, "favorites"));
+  return snapshot.exists() ? Object.values(snapshot.val()) : [];
+};

@@ -7,7 +7,7 @@ import Start from './src/screens/Start';
 import Menu from "./src/screens/Menu";
 import RecipesList from "./src/screens/RecipesList";
 import RecipeDetail from "./src/screens/RecipeDetail";
-
+import FavoriteRecipes from "./src/screens/FavoriteRecipes";
 // Creación del Stack Navigator
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +19,7 @@ function App() {
         <Stack.Screen name="Menu" component={Menu} options={{ title: "Recipe Categories" }} />
         <Stack.Screen name="RecipesList" component={RecipesList} options={({ route }) => ({ title: route.params.category })} />
         <Stack.Screen name="RecipeDetail" component={RecipeDetail} options={{ title: "Recipe Details" }} />
+        <Stack.Screen name="FavoriteRecipes" component={FavoriteRecipes} options={{ title: "Favorites Recipes" }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

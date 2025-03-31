@@ -14,12 +14,21 @@ const Menu = ({ navigation }) => {
     }, []);
 
     return (
-        <ImageBackground 
-            source={{ uri: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4" }} 
+        <ImageBackground
+            source={{ uri: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4" }}
             style={styles.background}
         >
             <SafeAreaView style={styles.container}>
                 <Text style={styles.title}>🍽️ MENÚ</Text>
+                <View style={styles.headerRow}>
+
+                    <TouchableOpacity
+                        style={styles.favoriteButton}
+                        onPress={() => navigation.navigate("FavoriteRecipes")}
+                    >
+                        <Text style={styles.favoriteButtonText}>❤️ Favoritos</Text>
+                    </TouchableOpacity>
+                </View>
                 <FlatList
                     data={categories}
                     keyExtractor={(item) => item.idCategory}
@@ -100,6 +109,27 @@ const styles = StyleSheet.create({
         borderBottomWidth: 3,
         borderBottomColor: "#FF7043",
         paddingBottom: 5,
+    },
+    headerRow: {
+        alignItems: "center",
+        marginBottom: 15,
+    },
+
+    favoriteButton: {
+        backgroundColor: "#FFE0B2",
+        paddingVertical: 6,
+        paddingHorizontal: 12,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: "#FF7043",
+        elevation: 3,
+    },
+
+    favoriteButtonText: {
+        fontSize: 14,
+        fontWeight: "bold",
+        color: "#D84315",
+        fontFamily: "serif",
     },
 });
 
