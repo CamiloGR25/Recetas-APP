@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import { WebView } from "react-native-webview";
 import { fetchRecipeDetails } from "../services/api";
+import Icon from "react-native-vector-icons/Ionicons";
+import { addToFavorites, removeFromFavorites, isFavorite } from "../services/ServiceFavoriteRecipe";
+
 
 const RecipeDetail = ({ route }) => {
     const { mealId } = route.params;
@@ -10,6 +13,7 @@ const RecipeDetail = ({ route }) => {
     const [translatedIngredients, setTranslatedIngredients] = useState([]);
     const [isTranslated, setIsTranslated] = useState(false);
     const [currentLang, setCurrentLang] = useState("en");
+    const [favorite, setFavorite] = useState(false);
 
     useEffect(() => {
         const loadMeal = async () => {
@@ -19,7 +23,25 @@ const RecipeDetail = ({ route }) => {
         loadMeal();
     }, [mealId]);
 
+    useEffect(() => {
+        const checkFavorite = async () => {
+            const fav = await isFavorite(mealId);
+            setFavorite(fav);
+        };
+        checkFavorite();
+    }, [mealId]);
+
     if (!meal) return <Text style={styles.loadingText}>Cargando...</Text>;
+
+    const toggleFavorite = async () => {
+        if (!meal) return;
+        if (favorite) {
+            await removeFromFavorites(meal.idMeal);
+        } else {
+            await addToFavorites(meal);
+        }
+        setFavorite(!favorite);
+    };
 
     const getYouTubeEmbedUrl = (url) => {
         if (!url) return null;
@@ -71,7 +93,12 @@ const RecipeDetail = ({ route }) => {
 
     return (
         <ScrollView style={styles.container}>
-            <Image source={{ uri: meal.strMealThumb }} style={styles.detailImage} />
+            <View style={styles.imageContainer}>
+                <Image source={{ uri: meal.strMealThumb }} style={styles.detailImage} />
+                <TouchableOpacity style={styles.heartIcon} onPress={toggleFavorite}>
+                    <Icon name={favorite ? "heart" : "heart-outline"} size={30} color="#E74C3C" />
+                </TouchableOpacity>
+            </View>
             <View style={styles.section}>
                 <Text style={styles.title}>{meal.strMeal}</Text>
                 <Text style={styles.category}>Categoría: {meal.strCategory}</Text>
@@ -183,6 +210,18 @@ const styles = StyleSheet.create({
         height: 200,
         borderRadius: 10,
     },
+    imageContainer: {
+        position: "relative",
+    },
+    heartIcon: {
+        position: "absolute",
+        top: 20,
+        right: 20,
+        backgroundColor: "#fff",
+        borderRadius: 20,
+        padding: 5,
+        elevation: 5,
+    }
 });
 
 export default RecipeDetail;

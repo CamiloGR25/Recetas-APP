@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground } from
 
 const Start = ({ navigation }) => {
     return (
-        <ImageBackground 
+        <ImageBackground
             source={{ uri: "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2" }} // Fondo de comida
             style={styles.background}
         >
@@ -14,16 +14,16 @@ const Start = ({ navigation }) => {
                     <Text style={styles.title}>Delicious Recipes</Text>
                     <Text style={styles.subtitle}>Explore and cook amazing dishes</Text>
 
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Menu") }>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Menu")}>
                         <Text style={styles.buttonText}>Start</Text>
                     </TouchableOpacity>
-                    
+
                     <View style={styles.footerContainer}>
                         <Text style={styles.txtIntegrantes}>Members:</Text>
                         <Text style={styles.txtIntegrantes}>Sergio Camilo Gomez Rincon</Text>
                         <Text style={styles.txtIntegrantes}>Michael Rodriguez Rios</Text>
                         <Text style={styles.txtIntegrantes}>Gabriel Felipe Beltran Ruiz</Text>
-                        <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/2921/2921822.png" }} 
+                        <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/2921/2921822.png" }}
                             style={styles.footerImage} />
                     </View>
                 </View>
