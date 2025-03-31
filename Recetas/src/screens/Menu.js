@@ -20,15 +20,23 @@ const Menu = ({ navigation }) => {
         >
             <SafeAreaView style={styles.container}>
                 <Text style={styles.title}>🍽️ MENÚ</Text>
-                <View style={styles.headerRow}>
 
+                <View style={styles.headerRow}>
                     <TouchableOpacity
-                        style={styles.favoriteButton}
+                        style={styles.menuButton}
                         onPress={() => navigation.navigate("FavoriteRecipes")}
                     >
-                        <Text style={styles.favoriteButtonText}>❤️ Favoritos</Text>
+                        <Text style={styles.menuButtonText}>❤️ Favoritos</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={styles.menuButton}
+                        onPress={() => navigation.navigate("CreateRecipe")}
+                    >
+                        <Text style={styles.menuButtonText}>➕ Crear receta</Text>
                     </TouchableOpacity>
                 </View>
+
                 <FlatList
                     data={categories}
                     keyExtractor={(item) => item.idCategory}
@@ -111,26 +119,27 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
     },
     headerRow: {
+        flexDirection: "row",
         alignItems: "center",
-        marginBottom: 15,
+        marginBottom: 20,
     },
-
-    favoriteButton: {
+    menuButton: {
         backgroundColor: "#FFE0B2",
         paddingVertical: 6,
         paddingHorizontal: 12,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: "#FF7043",
-        elevation: 3,
+        marginLeft: 10,
     },
 
-    favoriteButtonText: {
+    menuButtonText: {
         fontSize: 14,
         fontWeight: "bold",
         color: "#D84315",
         fontFamily: "serif",
     },
+
 });
 
 export default Menu;

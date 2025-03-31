@@ -1,22 +1,43 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet, SafeAreaView, ImageBackground } from "react-native";
 import { fetchRecipesByCategory } from "../services/api";
+import { fetchNewRecipesByCategory } from "../services/ServiceNewRecipes";
 
 const RecipesList = ({ route, navigation }) => {
     const { category } = route.params;
     const [recipes, setRecipes] = useState([]);
 
-    useEffect(() => {
+    /*useEffect(() => {
         const loadRecipes = async () => {
             const data = await fetchRecipesByCategory(category);
             setRecipes(data);
         };
         loadRecipes();
+    }, [category]);*/
+
+    useEffect(() => {
+        const loadRecipes = async () => {
+            const apiRecipes = await fetchRecipesByCategory(category);
+            const newRecipes = await fetchNewRecipesByCategory(category);
+
+            // Ajustar para que todos tengan idMeal
+            const newRecipesWithId = newRecipes.map((recipe, index) => ({
+                ...recipe,
+                idMeal: recipe.idMeal || `new-${index}-${recipe.strMeal}`,
+            }));
+
+            const allRecipes = [...newRecipesWithId, ...(apiRecipes || [])];
+            setRecipes(allRecipes);
+        };
+
+        loadRecipes();
     }, [category]);
 
+
+
     return (
-        <ImageBackground 
-            source={{ uri: "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2" }} 
+        <ImageBackground
+            source={{ uri: "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2" }}
             style={styles.background}
         >
             <SafeAreaView style={styles.container}>
