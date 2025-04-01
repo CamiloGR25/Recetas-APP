@@ -20,8 +20,7 @@ const Menu = ({ navigation }) => {
         >
             <SafeAreaView style={styles.container}>
                 <Text style={styles.title}>🍽️ MENÚ</Text>
-
-                <View style={styles.headerRow}>
+                {/*<View style={styles.headerRow}>
                     <TouchableOpacity
                         style={styles.menuButton}
                         onPress={() => navigation.navigate("FavoriteRecipes")}
@@ -35,7 +34,7 @@ const Menu = ({ navigation }) => {
                     >
                         <Text style={styles.menuButtonText}>➕ Crear receta</Text>
                     </TouchableOpacity>
-                </View>
+                </View>*/}
 
                 <FlatList
                     data={categories}
