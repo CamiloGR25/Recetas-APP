@@ -1,4 +1,3 @@
-// MainTabs.js
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import FavoriteRecipes from "./FavoriteRecipes";
@@ -11,6 +10,7 @@ const Tab = createBottomTabNavigator();
 export default function MainTabs() {
     return (
         <Tab.Navigator
+            initialRouteName="Inicio"  // Aquí se define la pestaña por defecto
             screenOptions={({ route }) => ({
                 headerShown: false,
                 tabBarActiveTintColor: "#FF7043",
