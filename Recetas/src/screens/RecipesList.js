@@ -49,7 +49,10 @@ const RecipesList = ({ route, navigation }) => {
                     renderItem={({ item }) => (
                         <TouchableOpacity
                             style={styles.card}
-                            onPress={() => navigation.navigate("RecipeDetail", { mealId: item.idMeal })}
+                            onPress={() => navigation.navigate("Inicio", {
+                                screen: "RecipeDetail",
+                                params: { mealId: item.idMeal }
+                            })}
                         >
                             <Image source={{ uri: item.strMealThumb }} style={styles.image} />
                             <Text style={styles.text}>{item.strMeal}</Text>

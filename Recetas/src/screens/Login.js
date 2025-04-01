@@ -15,7 +15,8 @@ const Login = ({ navigation }) => {
         const result = await loginUser({ email, password });
 
         if (result.success) {
-            navigation.replace("Menu"); // Ir al menú principal
+            // Navegamos al Tab Navigator principal, que se llama "Main"
+            navigation.replace("Main");
         } else {
             Alert.alert("Error al iniciar sesión", result.error);
         }
@@ -56,7 +57,6 @@ const Login = ({ navigation }) => {
                 <TouchableOpacity onPress={() => navigation.navigate("ForgotPassword")}>
                     <Text style={styles.linkText}>Forgot your password? Reset it</Text>
                 </TouchableOpacity>
-
             </View>
         </ImageBackground>
     );
