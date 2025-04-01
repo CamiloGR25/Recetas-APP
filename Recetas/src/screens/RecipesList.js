@@ -23,7 +23,7 @@ const RecipesList = ({ route, navigation }) => {
             // Ajustar para que todos tengan idMeal
             const newRecipesWithId = newRecipes.map((recipe, index) => ({
                 ...recipe,
-                idMeal: recipe.idMeal || `new-${index}-${recipe.strMeal}`,
+                idMeal: recipe.idMeal || `new-${recipe.strMeal.replace(/\s+/g, "-").toLowerCase()}`,
             }));
 
             const allRecipes = [...newRecipesWithId, ...(apiRecipes || [])];

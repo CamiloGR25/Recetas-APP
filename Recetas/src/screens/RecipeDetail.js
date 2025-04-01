@@ -4,6 +4,7 @@ import { WebView } from "react-native-webview";
 import { fetchRecipeDetails } from "../services/api";
 import Icon from "react-native-vector-icons/Ionicons";
 import { addToFavorites, removeFromFavorites, isFavorite } from "../services/ServiceFavoriteRecipe";
+import { fetchNewRecipeDetails } from "../services/ServiceNewRecipes";
 
 
 const RecipeDetail = ({ route }) => {
@@ -17,8 +18,21 @@ const RecipeDetail = ({ route }) => {
 
     useEffect(() => {
         const loadMeal = async () => {
-            const data = await fetchRecipeDetails(mealId);
-            setMeal(data);
+            const dataAPI = await fetchRecipeDetails(mealId);
+            //console.log(Object.keys(dataAPI).length)
+            // Si no encuentra la receta en la API, buscar en Firebase
+            if (!dataAPI || Object.keys(dataAPI).length === 1) {
+                const newRecipe = await fetchNewRecipeDetails(mealId);
+                //console.log("------ receta nueva:" + newRecipe)
+                if (newRecipe) {
+                    setMeal(newRecipe);
+                } else {
+                    console.log("No se encontraron datos para esta receta.");
+                    setMeal(null);
+                }
+            } else {
+                setMeal(dataAPI);
+            }
         };
         loadMeal();
     }, [mealId]);
