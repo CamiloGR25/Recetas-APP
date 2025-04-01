@@ -1,35 +1,49 @@
 # Recetas-App
 
-RecetasApp es una aplicación móvil desarrollada con **React Native** y **Expo** que permite explorar recetas de cocina. La aplicación utiliza la API de [TheMealDB](https://www.themealdb.com/api.php) para mostrar información actualizada de recetas.
+RecetasApp es una aplicación móvil desarrollada con **React Native** y **Expo** que permite explorar recetas de cocina. La aplicación utiliza la API de [TheMealDB](https://www.themealdb.com/api.php) para mostrar información actualizada de recetas, e integra **Firebase** para la autenticación de usuarios mediante correo electrónico y la gestión en tiempo real de datos.
 
 ## 📱 Funcionalidades
 
 - **Explorar categorías**: Visualiza distintas categorías de recetas, cada una representada por una imagen.
 - **Listar recetas por categoría**: Al seleccionar una categoría, se muestra una lista de recetas con nombre e imagen.
 - **Ver detalles de recetas**: Accede a información completa de cada receta, incluyendo ingredientes, preparación e instrucciones.
+- **Autenticación con correo electrónico**: Permite a los usuarios registrarse e iniciar sesión utilizando su correo, gestionado a través de Firebase Authentication.
+- **Gestión de datos en tiempo real**: Utiliza Firebase para almacenar y sincronizar datos, mejorando la experiencia del usuario.
 
 ## 🛠️ Tecnologías utilizadas
 
-- **React Native / Expo** para el desarrollo multiplataforma.
-- **React Navigation** para gestionar la navegación entre pantallas.
-- **Fetch API** para consumir los endpoints de [TheMealDB](https://www.themealdb.com/api.php).
+- **React Native / Expo**: Desarrollo multiplataforma para dispositivos móviles.
+- **React Navigation**: Manejo de la navegación entre pantallas.
+- **Fetch API**: Consumo de endpoints de [TheMealDB](https://www.themealdb.com/api.php).
+- **Firebase**: 
+  - **Firebase Authentication**: Autenticación de usuarios mediante correo electrónico.
+  - **Realtime Database / Firestore** (según se requiera): Gestión y sincronización de datos.
 
 ## 📂 Estructura del proyecto
 
 ```
-Recetas/ 
-├── src/                    # Código fuente principal
-│   ├── data/               # Datos y modelos
-│   │   └── Recetas.js      # Datos de recetas
-│   ├── screens/            # Pantallas de la aplicación 
-│   │   ├── Menu.js         # Pantalla principal/menú
-│   │   ├── RecipeDetail.js # Pantalla de detalle de receta
-│   │   ├── RecipesList.js  # Pantalla de lista de recetas
-│   │   └── Start.js        # Pantalla de inicio
-│   ├── services/           # Servicios y APIs
-│   │   └── api.js          # Cliente API para TheMealDB
-├── App.js                  # Componente principal de la aplicación
-└── index.js                # Punto de entrada de la aplicación
+Recetas/
+├── assets/                          # Recursos estáticos (imágenes, fuentes, etc.)
+├── src/                             # Código fuente principal
+│   ├── screens/                     # Pantallas de la aplicación
+│   │   ├── CreateRecipe.js          # Pantalla para crear recetas
+│   │   ├── FavoriteRecipes.js       # Pantalla de recetas favoritas
+│   │   ├── ForgotPassword.js        # Pantalla de recuperación de contraseña
+│   │   ├── Login.js                 # Pantalla de inicio de sesión
+│   │   ├── Menu.js                  # Pantalla principal/menú
+│   │   ├── RecipeDetail.js          # Pantalla de detalle de receta
+│   │   ├── RecipesList.js           # Pantalla de lista de recetas
+│   │   ├── Register.js              # Pantalla de registro de usuario
+│   │   └── Start.js                 # Pantalla de inicio
+│   └── services/                    # Servicios y lógica de negocio
+│       ├── api.js                   # Cliente API (por ejemplo, TheMealDB u otras)
+│       ├── firebaseConfig.js        # Configuración de Firebase
+│       ├── metro.config.js          # Configuración adicional de Metro (si aplica)
+│       ├── ServiceAuth.js           # Servicio para autenticación
+│       ├── ServiceFavoriteRecipe.js # Servicio para manejar recetas favoritas
+│       └── ServiceNewRecipes.js     # Servicio para manejar nuevas recetas
+├── App.js                           # Componente principal de la aplicación (punto de entrada en Expo)
+└── index.js                         # Punto de entrada de la aplicación (usado en algunas configuraciones)
 ```
 
 ## 🚀 Instalación y ejecución
